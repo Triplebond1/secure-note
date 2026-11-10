@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -319,45 +320,45 @@ func main() {
 	// //fmt.Println(AddNumbers(a, b))
 	// fmt.Println(AddNumbers(float64(a), b))
 
-	var numbers Stack[int]
+	// var numbers Stack[int]
 
-	numbers.Push(10)
-	numbers.Push(20)
-	numbers.Push(30)
+	// numbers.Push(10)
+	// numbers.Push(20)
+	// numbers.Push(30)
 
-	fmt.Println(numbers.items)
+	// fmt.Println(numbers.items)
 
-	fmt.Println(numbers.Pop())
-	fmt.Println(numbers.items)
+	// fmt.Println(numbers.Pop())
+	// fmt.Println(numbers.items)
 
-	var empty Stack[int]
+	// var empty Stack[int]
 
-	fmt.Println(empty.Pop())
-	item, ok := empty.Pop()
+	// fmt.Println(empty.Pop())
+	// item, ok := empty.Pop()
 
-	fmt.Println(item, ok)
+	// fmt.Println(item, ok)
 
-	var names Stack[string]
+	// var names Stack[string]
 
-	names.Push("John")
-	names.Push("Mary")
+	// names.Push("John")
+	// names.Push("Mary")
 
-	name, ok := names.Pop()
+	// name, ok := names.Pop()
 
-	fmt.Println(name, ok)
+	// fmt.Println(name, ok)
 
-	nam, ok := names.Pop()
+	// nam, ok := names.Pop()
 
-	fmt.Println(nam, ok)
+	// fmt.Println(nam, ok)
 
-	na, ok := names.Pop()
+	// na, ok := names.Pop()
 
-	fmt.Println(na, ok)
+	// fmt.Println(na, ok)
 
-	value, ok := numbers.Peek()
+	// value, ok := numbers.Peek()
 
-	fmt.Println(value, ok)
-	fmt.Println(numbers.items)
+	// fmt.Println(value, ok)
+	// fmt.Println(numbers.items)
 
 	// var number Stack[[]int]
 
@@ -366,45 +367,253 @@ func main() {
 
 	// fmt.Println(number.items)
 
-	var users Stack[User]
+	//var users Stack[User]
 
+	// var box Container[string] = &Box[string]{}
+
+	// box.Add("Secure Notes")
+
+	// fmt.Println(box.Get())
+
+	// var box Container[int] = &Box[int]{}
+
+	// box.Add(100)
+
+	// fmt.Println(box.Get())
+
+	// var intBox Container[int] = &Box[int]{}
+	// var stringBox Container[string] = &Box[string]{}
+
+	// intBox.Add(1000)
+	// stringBox.Add("Secure Notes")
+
+	// fmt.Println(intBox.Get())
+	// fmt.Println(stringBox.Get())
+
+	// intBox := &Box[int]{}
+	// stringBox := &Box[string]{}
+
+	// Store[int](intBox, 1000)
+	// Store(stringBox, "Secure Notes")
+
+	// result, err := divide(10, 0)
+
+	// fmt.Println("Result:", result)
+	// fmt.Println("Error:", err)
+	// fmt.Printf("Error type: %T\n", err)
+
+	// var err error = ValidationError{
+	// 	Message: "username is required",
+	// }
+
+	// var err2 error = &ValidationError{
+	// 	Message: "username is required",
+	// }
+
+	// //fmt.Println(err)
+	// fmt.Println(err2)
+	// fmt.Printf("Error type: %T\n", err2)
+
+	// err := validateUsername("triplebond")
+
+	// fmt.Printf("Error: %v\n", err)
+	// fmt.Printf("Type: %T\n", err)
+
+	// if err != nil {
+	// 	fmt.Println("Validation failed:", err)
+	// } else {
+	// 	fmt.Println("Validation successful")
+	// }
+
+	// err3 := findNote(100)
+
+	// if err3 != nil {
+	// 	fmt.Println(err3)
+	// }
+
+	// err := findNote(200)
+
+	// if errors.Is(err, ErrNoteNotFound) {
+	// 	fmt.Println("The requested note does not exist")
+	// } else {
+	// 	fmt.Println("Something else happened")
+	// }
+
+	// err := validateUsername("")
+
+	// var validationErr *ValidationError
+
+	// if errors.As(err, &validationErr) {
+	// 	fmt.Println("Field:", validationErr.Field)
+	// 	fmt.Println("Message:", validationErr.Message)
+	// }
+
+	err := authenticate("wrong-password")
+
+	var validationErr *ValidationError
+	var authErr *AuthenticationError
+
+	fmt.Println("Is validation error:", errors.As(err, &validationErr))
+	fmt.Println("Is authentication error:", errors.As(err, &authErr))
+
+	if authErr != nil {
+		fmt.Println("Authentication message:", authErr.Message)
+	}
 }
+
+type AuthenticationError struct {
+	Message string
+}
+
+func (e *AuthenticationError) Error() string {
+	return e.Message
+}
+
+func authenticate(password string) error {
+	if password != "secret123" {
+		return fmt.Errorf(
+			"login failed: %w",
+			&AuthenticationError{
+				Message: "invalid credentials",
+			},
+		)
+	}
+
+	return nil
+}
+
+var ErrNoteNotFound = errors.New("note not found")
+
+// func findNote(id int) error {
+// 	if id == 100 {
+// 		return nil
+// 	}
+
+// 	return errors.New("note not found")
+// }
+
+// func findNote(id int) error {
+// 	if id == 100 {
+// 		return nil
+// 	}
+
+//		return fmt.Errorf("findNote: failed to retrieve note: %w", ErrNoteNotFound)
+//	}
+
+func findNote(id int) error {
+	if id == 100 {
+		return nil
+	}
+
+	return fmt.Errorf("findNote: failed to retrieve note: %v", ErrNoteNotFound)
+}
+
+type ValidationError struct {
+	Field   string
+	Message string
+}
+
+func (e *ValidationError) Error() string {
+	return e.Field + ": " + e.Message
+}
+
+// func validateUsername(username string) error {
+// 	if username == "" {
+// 		return &ValidationError{
+// 			Field:   "username",
+// 			Message: "is required",
+// 		}
+// 	}
+
+// 	return nil
+// }
+
+func validateUsername(username string) error {
+	if username == "" {
+		validationErr := &ValidationError{
+			Field:   "username",
+			Message: "is required",
+		}
+
+		return fmt.Errorf("registration failed: %w", validationErr)
+	}
+
+	return nil
+}
+
+// type ValidationError struct {
+// 	Message string
+// }
+
+// func (e *ValidationError) Error() string {
+// 	return e.Message
+// }
+
+// func divide(a, b int) (int, error) {
+// 	if b == 0 {
+// 		return 0, errors.New("cannot divide by zero")
+// 	}
+
+// 	return a / b, nil
+// }
+
+// func Store[T any](box Container[T], value T) {
+// 	box.Add(value)
+// 	fmt.Println(box.Get())
+// }
+
+// type Container[T any] interface {
+// 	Add(item T)
+// 	Get() T
+// }
+
+// type Box[T any] struct {
+// 	item T
+// }
+
+// func (b *Box[T]) Add(item T) {
+// 	b.item = item
+// }
+
+// func (b *Box[T]) Get() T {
+// 	return b.item
+// }
 
 // type Stack[T any] struct {
 // 	items []T
 // }
 
-type Stack[T comparable] struct {
-	items []T
-}
+// type Stack[T comparable] struct {
+// 	items []T
+// }
 
-type User struct {
-	ID   int
-	Name string
-	Tags []string
-}
+// type User struct {
+// 	ID   int
+// 	Name string
+// 	Tags []string
+// }
 
-func (s *Stack[T]) Contains(value T) bool {
-	for _, item := range s.items {
-		if item == value {
-			return true
-		}
-	}
+// func (s *Stack[T]) Contains(value T) bool {
+// 	for _, item := range s.items {
+// 		if item == value {
+// 			return true
+// 		}
+// 	}
 
-	return false
-}
-func (s *Stack[T]) Peek() (T, bool) {
-	if len(s.items) == 0 {
-		var zero T
-		return zero, false
-	}
+// 	return false
+// }
+// func (s *Stack[T]) Peek() (T, bool) {
+// 	if len(s.items) == 0 {
+// 		var zero T
+// 		return zero, false
+// 	}
 
-	return s.items[len(s.items)-1], true
-}
+// 	return s.items[len(s.items)-1], true
+// }
 
-func (s *Stack[T]) Push(item T) {
-	s.items = append(s.items, item)
-}
+// func (s *Stack[T]) Push(item T) {
+// 	s.items = append(s.items, item)
+// }
 
 // func (s *Stack[T]) Pop() T {
 // 	last := len(s.items) - 1
@@ -413,18 +622,18 @@ func (s *Stack[T]) Push(item T) {
 // 	return item
 // }
 
-func (s *Stack[T]) Pop() (T, bool) {
-	if len(s.items) == 0 {
-		var zero T
-		return zero, false
-	}
+// func (s *Stack[T]) Pop() (T, bool) {
+// 	if len(s.items) == 0 {
+// 		var zero T
+// 		return zero, false
+// 	}
 
-	last := len(s.items) - 1
-	item := s.items[last]
-	s.items = s.items[:last]
+// 	last := len(s.items) - 1
+// 	item := s.items[last]
+// 	s.items = s.items[:last]
 
-	return item, true
-}
+// 	return item, true
+// }
 
 // type Number interface {
 // 	~int | ~int64 | ~float64
@@ -449,29 +658,29 @@ func (s *Stack[T]) Pop() (T, bool) {
 // 	return int(a) + int(b)
 // }
 
-func Add[T interface{ ~int }](a, b T) T {
-	return a + b
-}
-func Print[T any](value T) {
-	fmt.Println(value)
-}
-
-type Addable interface {
-	int | int64 | float64 | string
-}
-
-// func Add[T Addable](a T, b T) {
-// 	fmt.Println(a + b)
+// func Add[T interface{ ~int }](a, b T) T {
+// 	return a + b
+// }
+// func Print[T any](value T) {
+// 	fmt.Println(value)
 // }
 
-func Equal[T comparable](a, b T) bool {
-	return a == b
-}
+// type Addable interface {
+// 	int | int64 | float64 | string
+// }
 
-type Notification struct {
-	Message string
-	secret  string
-}
+// // func Add[T Addable](a T, b T) {
+// // 	fmt.Println(a + b)
+// // }
+
+// func Equal[T comparable](a, b T) bool {
+// 	return a == b
+// }
+
+// type Notification struct {
+// 	Message string
+// 	secret  string
+// }
 
 // type MyError struct{}
 
