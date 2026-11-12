@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
@@ -448,98 +447,454 @@ func main() {
 	// 	fmt.Println("Message:", validationErr.Message)
 	// }
 
-	err := authenticate("wrong-password")
+	// err := authenticate("wrong-password")
 
-	var validationErr *ValidationError
-	var authErr *AuthenticationError
+	// var validationErr *ValidationError
+	// var authErr *AuthenticationError
 
-	fmt.Println("Is validation error:", errors.As(err, &validationErr))
-	fmt.Println("Is authentication error:", errors.As(err, &authErr))
+	// fmt.Println("Is validation error:", errors.As(err, &validationErr))
+	// fmt.Println("Is authentication error:", errors.As(err, &authErr))
 
-	if authErr != nil {
-		fmt.Println("Authentication message:", authErr.Message)
-	}
+	// if authErr != nil {
+	// 	fmt.Println("Authentication message:", authErr.Message)
+	// }
+	// handleGetNote(100)
+	// handleGetNote(200)
+	// handleGetNote(-1)
+	// handleGetNote(500)
+
+	// fmt.Println("Start")
+
+	// defer fmt.Println("First deferred function")
+	// defer fmt.Println("Second deferred function")
+
+	// fmt.Println("End")
+
+	// process()
+	// fmt.Println("Main function continues")
+
+	//err := getNotew()
+
+	// if err != nil {
+	// 	fmt.Println("Error:", err)
+	// }
+
+	// process()
+	// fmt.Println("Main function continues")
+
+	// handler()
+	// fmt.Println("Application continues")
+
+	//text := "Hello"
+	//text := "Hello 世界"
+
+	// fmt.Println("String:", text)
+	// fmt.Println("Length:", len(text))
+	// fmt.Println("Character count:", utf8.RuneCountInString(text))
+
+	// for i := 0; i < len(text); i++ {
+	// 	fmt.Println(i, text[i])
+	// }
+
+	// for index, char := range text {
+	// 	fmt.Printf("Index: %d | Character: %c | Rune value: %d\n",
+	// 		index, char, char)
+	// }
+
+	// runes := []rune(text)
+
+	// fmt.Println("String length:", len(text))
+	// fmt.Println("Rune length:", len(runes))
+
+	// for i, r := range runes {
+	// 	fmt.Printf("Index: %d | Character: %c | Value: %d\n", i, r, r)
+	// }
+
+	// var letter rune = '世'
+	// var number int32 = 19990
+
+	// fmt.Println("Letter:", letter)
+	// fmt.Println("Letter as character:", string(letter))
+	// fmt.Println("Are they equal?", letter == rune(number))
+
+	// fmt.Printf("Type of letter: %T\n", letter)
+
+	// word := "Go"
+
+	// var letter rune = 'G'
+
+	// fmt.Println("String:", word)
+	// fmt.Println("Rune:", letter)
+	// fmt.Println("Rune as string:", string(letter))
+
+	//text := "Go"
+	// text := "Go 世界"
+
+	// bytes := []byte(text)
+	// runes := []rune(text)
+
+	// fmt.Println("String:", text)
+	// fmt.Println("Bytes:", bytes)
+	// fmt.Println("Runes:", runes)
+
+	// fmt.Printf("Bytes type: %T\n", bytes[0])
+	// fmt.Printf("Runes type: %T\n", runes[0])
+
+	// fmt.Println("Byte count:", len(bytes))
+	// fmt.Println("Rune count:", len(runes))
+
+	// text := "世"
+
+	// bytes := []byte(text)
+	// runes := []rune(text)
+
+	// fmt.Printf("Bytes (decimal): %v\n", bytes)
+	// fmt.Printf("Bytes (hex): %X\n", bytes)
+
+	// fmt.Printf("Rune (decimal): %d\n", runes[0])
+	// fmt.Printf("Rune (hex): %X\n", runes[0])
+
+	// bytes := []byte{0xE4, 0xB8, 0x96}
+
+	// r, size := utf8.DecodeRune(bytes)
+
+	// fmt.Printf("Decoded rune: %c\n", r)
+	// fmt.Printf("Rune value: U+%04X\n", r)
+	// fmt.Printf("Bytes consumed: %d\n", size)
+
+	// complete := []byte{0xE4, 0xB8, 0x96}
+	// incomplete := []byte{0xE4, 0xB8}
+
+	// r1, size1 := utf8.DecodeRune(complete)
+	// r2, size2 := utf8.DecodeRune(incomplete)
+
+	// fmt.Printf("Complete: %c | U+%04X | Size: %d\n", r1, r1, size1)
+	// fmt.Printf("Incomplete: %c | U+%04X | Size: %d\n", r2, r2, size2)
+
+	// data := []byte{0xE4, 0xB8}
+
+	// for len(data) > 0 {
+	// 	r, size := utf8.DecodeRune(data)
+
+	// 	fmt.Printf("Rune: U+%04X | Size: %d\n", r, size)
+
+	// 	data = data[size:]
+	// }
+
+	// valid := []byte("Hello 世界")
+	// invalid := []byte{0xE4, 0xB8}
+
+	// fmt.Println("Valid data:", utf8.Valid(valid))
+	// fmt.Println("Invalid data:", utf8.Valid(invalid))
+	// bytes := []byte{0xE4, 0xB8, 0x96}
+
+	// b1 := uint32(bytes[0] & 0b00001111)
+	// b2 := uint32(bytes[1] & 0b00111111)
+	// b3 := uint32(bytes[2] & 0b00111111)
+
+	// codePoint := (b1 << 12) | (b2 << 6) | b3
+
+	// fmt.Printf("First part:  %04b\n", b1)
+	// fmt.Printf("Second part: %06b\n", b2)
+	// fmt.Printf("Third part:  %06b\n", b3)
+
+	// fmt.Printf("Reconstructed: U+%04X\n", codePoint)
+	// fmt.Printf("Decimal: %d\n", codePoint)
+
+	// //bytes := []byte{0xE4, 0xB8, 0x96}
+
+	// r, size := utf8.DecodeRune(bytes)
+
+	// fmt.Printf("Decoded rune: %c\n", r)
+	// fmt.Printf("Rune value: U+%04X\n", r)
+	// fmt.Printf("Bytes consumed: %d\n", size)
+
+	// number := uint32(5)
+
+	// fmt.Printf("Original: %08b\n", number)
+	// fmt.Printf("Shift 1:  %08b\n", number<<1)
+	// fmt.Printf("Shift 2:  %08b\n", number<<2)
+	// fmt.Printf("Shift 3:  %08b\n", number<<3)
+
+	// a := uint32(13)
+	// b := uint32(3)
+	// fmt.Printf("Original a: %08b\n", a)
+	// fmt.Printf("Original b: %08b\n", b)
+	// fmt.Printf("AND: %04b\n", a&b)
+	// fmt.Printf("OR:  %04b\n", a|b)
+
+	// fmt.Printf("a:       %04b\n", a)
+	// fmt.Printf("b:       %04b\n", b)
+	// fmt.Printf("AND:     %04b\n", a&b)
+	// fmt.Printf("OR:      %04b\n", a|b)
+	// fmt.Printf("XOR:     %04b\n", a^b)
+	// fmt.Printf("a XOR a: %04b\n", a^a)
+
+	// result := a ^ b
+	// restored := result ^ b
+	// fmt.Println("Result:", result)
+	// fmt.Println("Restored:", restored)
+
+	// encrypted := a ^ b
+	// decrypted := encrypted ^ b
+
+	// fmt.Println("Original:", a)
+	// fmt.Println("Key:", b)
+	// fmt.Println("After XOR:", encrypted)
+	// fmt.Println("After XOR again:", decrypted)
+
+	original := "Hello"
+
+	bytes := []byte(original)
+
+	fmt.Println("Original string:", original)
+	fmt.Println("Byte slice:", bytes)
+
+	bytes[0] = 'Y'
+
+	fmt.Println("After modification:")
+	fmt.Println("Original string:", original)
+	fmt.Println("Byte slice:", string(bytes))
+
 }
 
-type AuthenticationError struct {
-	Message string
-}
+// func getNotew() error {
+// 	defer fmt.Println("Closing database connection")
 
-func (e *AuthenticationError) Error() string {
-	return e.Message
-}
+// 	fmt.Println("Querying database")
 
-func authenticate(password string) error {
-	if password != "secret123" {
-		return fmt.Errorf(
-			"login failed: %w",
-			&AuthenticationError{
-				Message: "invalid credentials",
-			},
-		)
-	}
-
-	return nil
-}
-
-var ErrNoteNotFound = errors.New("note not found")
-
-// func findNote(id int) error {
-// 	if id == 100 {
-// 		return nil
-// 	}
-
-// 	return errors.New("note not found")
+// 	return errors.New("database query failed")
 // }
 
-// func findNote(id int) error {
-// 	if id == 100 {
-// 		return nil
+// func process() {
+// 	defer fmt.Println("Deferred cleanup")
+
+// 	fmt.Println("Processing started")
+
+// 	panic("something went terribly wrong")
+
+// 	fmt.Println("Processing completed")
+// }
+
+// func service() {
+// 	fmt.Println("Service started")
+// 	panic("service crashed")
+// }
+
+// func handler() {
+// 	defer func() {
+// 		if r := recover(); r != nil {
+// 			fmt.Println("Handler recovered:", r)
+// 		}
+// 	}()
+
+// 	//service()
+
+// 	//go service()
+
+// 	go func() {
+// 		defer func() {
+// 			if r := recover(); r != nil {
+// 				fmt.Println("Worker recovered:", r)
+// 			}
+// 		}()
+
+// 		service()
+// 	}()
+
+// 	time.Sleep(time.Second)
+
+// 	fmt.Println("Handler completed")
+// }
+
+// func process() {
+// 	defer func() {
+// 		if r := recover(); r != nil {
+// 			fmt.Println("Recovered from panic:", r)
+// 		}
+// 	}()
+
+// 	defer fmt.Println("Deferred cleanup")
+
+// 	fmt.Println("Processing started")
+
+// 	panic("something went terribly wrong")
+
+// 	fmt.Println("Processing completed")
+// }
+
+// var ErrNoteNotFound = errors.New("note not found")
+// var ErrInvalidNoteID = errors.New("invalid note ID")
+// var ErrDatabaseUnavailable = errors.New("database unavailable")
+
+// Repository Layer
+// func getNoteFromDB(id int) (string, error) {
+// 	if id <= 0 {
+// 		return "", ErrInvalidNoteID
 // 	}
 
-//		return fmt.Errorf("findNote: failed to retrieve note: %w", ErrNoteNotFound)
-//	}
+// 	// if id == 500 {
+// 	// 	return "", ErrDatabaseUnavailable
+// 	// }
 
-func findNote(id int) error {
-	if id == 100 {
-		return nil
-	}
+// 	if id == 500 {
+// 		return "", fmt.Errorf("repository: database query failed: %w", ErrDatabaseUnavailable)
+// 	}
 
-	return fmt.Errorf("findNote: failed to retrieve note: %v", ErrNoteNotFound)
-}
+// 	if id != 100 {
+// 		return "", ErrNoteNotFound
+// 	}
 
-type ValidationError struct {
-	Field   string
-	Message string
-}
+// 	return "My first secure note", nil
+// }
 
-func (e *ValidationError) Error() string {
-	return e.Field + ": " + e.Message
-}
+// // Service Layer
+// func getNote(id int) (string, error) {
+// 	note, err := getNoteFromDB(id)
 
-// func validateUsername(username string) error {
-// 	if username == "" {
-// 		return &ValidationError{
-// 			Field:   "username",
-// 			Message: "is required",
-// 		}
+// 	if err != nil {
+// 		return "", fmt.Errorf("service: get note: %w", err)
+// 	}
+
+// 	return note, nil
+// }
+
+// // HTTP Handler Layer (simulated)
+// // func handleGetNote(id int) {
+// // 	note, err := getNote(id)
+
+// // 	if err != nil {
+// // 		fmt.Println("Handler error:", err)
+// // 		return
+// // 	}
+
+// // 	fmt.Println("Note:", note)
+// // }
+
+// // func handleGetNote(id int) {
+// // 	note, err := getNote(id)
+
+// // 	if err != nil {
+// // 		if errors.Is(err, ErrNoteNotFound) {
+// // 			fmt.Println("HTTP Status: 404 Not Found")
+// // 			return
+// // 		}
+
+// // 		fmt.Println("HTTP Status: 500 Internal Server Error")
+// // 		return
+// // 	}
+
+// // 	fmt.Println("Note:", note)
+// // }
+
+// func handleGetNote(id int) {
+// 	note, err := getNote(id)
+
+// 	// if err != nil {
+// 	// 	switch {
+// 	// 	case errors.Is(err, ErrNoteNotFound):
+// 	// 		fmt.Println("HTTP Status: 404 Not Found")
+
+// 	// 	case errors.Is(err, ErrInvalidNoteID):
+// 	// 		fmt.Println("HTTP Status: 400 Bad Request")
+
+// 	// 	default:
+// 	// 		fmt.Println("HTTP Status: 500 Internal Server Error")
+// 	// 	}
+
+// 	// 	return
+// 	// }
+
+// 	if err != nil {
+// 		fmt.Println("Complete error:", err)
+
+// 		fmt.Println(
+// 			"Is database unavailable:",
+// 			errors.Is(err, ErrDatabaseUnavailable),
+// 		)
+
+// 		return
+// 	}
+// 	fmt.Println("Note:", note)
+// }
+
+// type AuthenticationError struct {
+// 	Message string
+// }
+
+// func (e *AuthenticationError) Error() string {
+// 	return e.Message
+// }
+
+// func authenticate(password string) error {
+// 	if password != "secret123" {
+// 		return fmt.Errorf(
+// 			"login failed: %w",
+// 			&AuthenticationError{
+// 				Message: "invalid credentials",
+// 			},
+// 		)
 // 	}
 
 // 	return nil
 // }
 
-func validateUsername(username string) error {
-	if username == "" {
-		validationErr := &ValidationError{
-			Field:   "username",
-			Message: "is required",
-		}
+// // func findNote(id int) error {
+// // 	if id == 100 {
+// // 		return nil
+// // 	}
 
-		return fmt.Errorf("registration failed: %w", validationErr)
-	}
+// // 	return errors.New("note not found")
+// // }
 
-	return nil
-}
+// // func findNote(id int) error {
+// // 	if id == 100 {
+// // 		return nil
+// // 	}
+
+// //		return fmt.Errorf("findNote: failed to retrieve note: %w", ErrNoteNotFound)
+// //	}
+
+// func findNote(id int) error {
+// 	if id == 100 {
+// 		return nil
+// 	}
+
+// 	return fmt.Errorf("findNote: failed to retrieve note: %v", ErrNoteNotFound)
+// }
+
+// type ValidationError struct {
+// 	Field   string
+// 	Message string
+// }
+
+// func (e *ValidationError) Error() string {
+// 	return e.Field + ": " + e.Message
+// }
+
+// // func validateUsername(username string) error {
+// // 	if username == "" {
+// // 		return &ValidationError{
+// // 			Field:   "username",
+// // 			Message: "is required",
+// // 		}
+// // 	}
+
+// // 	return nil
+// // }
+
+// func validateUsername(username string) error {
+// 	if username == "" {
+// 		validationErr := &ValidationError{
+// 			Field:   "username",
+// 			Message: "is required",
+// 		}
+
+// 		return fmt.Errorf("registration failed: %w", validationErr)
+// 	}
+
+// 	return nil
+// }
 
 // type ValidationError struct {
 // 	Message string
